@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
+
+zuul:
+  ignored-services:
+    - '*'
+  routes:
+    dept:
+      serviceId: provider
+      path: /dept/**
+
+# 设置超时时间
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+
